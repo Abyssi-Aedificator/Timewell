@@ -38,7 +38,7 @@ Open [localhost:8080](http://localhost:8080) in your browser. Any static web ser
 
 Publish the repository root using GitHub Pages or another static host. Keep the HTML, JavaScript, stylesheets, manifest, service worker, and icons together. Relative asset paths support hosting under a subpath such as `/Timewell/`.
 
-Use HTTPS or localhost for service workers and notification permissions.
+Use HTTPS or localhost for service workers and notification permissions. The manifest uses a stable `/Timewell/` app identity so other apps on the same origin can be installed separately; keep this identity unchanged when updating Timewell.
 
 ## Using the timer
 

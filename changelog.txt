@@ -1,6 +1,10 @@
 Timewell Changelog
 ==================
 
+Version 1.0.1
+-------------
+- Fixed Android reporting Timewell as already installed by assigning it a dedicated /Timewell/ app identity instead of the shared website-root identity.
+
 Version 1.0.0
 -------------
 
