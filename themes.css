@@ -1,0 +1,168 @@
+/* Interface skins follow PlayDex. Keep after component styles, including picker inputs. */
+:root { --accent-ink:var(--accent); --on-accent:#18120b; --selection-bg:var(--surface3); --selection-ink:var(--accent); }
+/* Same two groups and Material-only first-group restriction as PlayDex. */
+.theme-colour-setting { flex-direction:column; align-items:stretch; gap:14px; }
+.theme-colour-setting .swatches { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 22px; justify-content:start; }
+.accent-col { display:flex; flex-wrap:wrap; align-content:start; gap:10px; max-width:220px; }
+.theme-colour-setting .swatch { width:34px; height:34px; flex:0 0 34px; padding:0; background-origin:border-box; transition:transform .15s var(--ease); }
+.theme-colour-setting .swatch:hover { transform:scale(1.08); }
+:root[data-ui=material] .theme-colour-setting .swatches { grid-template-columns:1fr; }
+:root[data-ui=material] .accent-col { max-width:none; }
+:root[data-ui=material] .theme-colour-setting .swatch { width:48px; height:48px; flex-basis:48px; }
+.btn.primary { color:var(--on-accent); }
+.picker-dial-label.selected { color:var(--on-accent); }
+:root:is([data-ui=material],[data-ui=apple]) :is(.badge,.text-button,.goal-heading strong,.session-icon) { color:var(--accent-ink); }
+:root:is([data-ui=material],[data-ui=apple]) .preset[aria-pressed=true] strong { color:var(--selection-ink); }
+:root:is([data-ui=material],[data-ui=apple]) .picker-number[aria-pressed=true],
+:root:is([data-ui=material],[data-ui=apple]) .picker-period button[aria-pressed=true] { background:var(--selection-bg); color:var(--selection-ink); }
+:root:is([data-ui=material],[data-ui=apple]) :is(button,input,select):focus-visible { outline:3px solid var(--accent-ink); outline-offset:3px; }
+:root:is([data-ui=material],[data-ui=apple]) .field-row .btn { height:auto; min-height:44px; }
+:root:is([data-ui=material],[data-ui=apple]) .today-heading { flex-wrap:wrap; }
+:root:is([data-ui=material],[data-ui=apple]) .session-row { flex-wrap:wrap; }
+:root:is([data-ui=material],[data-ui=apple]) .session-copy { min-width:100px; }
+
+/* Material 3: tonal surfaces, role colours, outlined fields, pill actions. */
+:root[data-ui=material] {
+  --bg:var(--md-background); --surface:var(--md-surface-container-low);
+  --surface2:var(--md-surface-container-high); --surface3:var(--md-surface-container-highest);
+  --text:var(--md-on-surface); --text2:var(--md-on-surface-variant); --text3:var(--md-on-surface-variant);
+  --border:var(--md-outline-variant); --glass:var(--md-surface-container);
+  --red:var(--md-error); --radius:12px; --shadow:none;
+  --ease:cubic-bezier(.2,0,0,1);
+}
+:root[data-ui=material] body { font-family:Roboto,'Roboto Flex',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif; background-image:none; letter-spacing:.1px; }
+:root[data-ui=material] header { background:var(--md-surface); backdrop-filter:none; -webkit-backdrop-filter:none; border:0; }
+:root[data-ui=material] h1 { font-size:22px; font-weight:500; letter-spacing:0; }
+:root[data-ui=material] h2 { font-weight:500; letter-spacing:0; }
+:root[data-ui=material] .card { background:var(--surface); border-color:transparent; border-radius:12px; box-shadow:none; }
+:root[data-ui=material] .card-heading { font-size:12px; font-weight:500; text-transform:none; letter-spacing:.5px; }
+:root[data-ui=material] .card-heading:before { display:none; }
+:root[data-ui=material] .time { font-size:45px; font-weight:500; letter-spacing:-1px; }
+:root[data-ui=material] .time.long { font-size:38px; }
+:root[data-ui=material] .stat strong { font-size:22px; font-weight:500; }
+:root[data-ui=material] :is(.btn,.text-button) { border-radius:999px; font-weight:500; font-size:.875rem; letter-spacing:.1px; min-height:40px; }
+:root[data-ui=material] .btn { background:transparent; color:var(--md-primary); border:1px solid var(--md-outline); padding:10px 18px; box-shadow:none; }
+:root[data-ui=material] .btn.small { min-height:36px; padding:7px 12px; font-size:.75rem; }
+:root[data-ui=material] .btn.primary { background:var(--md-primary); color:var(--md-on-primary); border-color:transparent; }
+:root[data-ui=material] .btn.danger { color:var(--md-error); border-color:var(--md-outline); background:transparent; }
+:root[data-ui=material] .btn:hover { filter:none; }
+:root[data-ui=material] .btn:active { transform:none; }
+:root[data-ui=material] .icon-button { width:40px; height:40px; border:0; border-radius:999px; background:transparent; color:var(--text2); }
+/* State layers use shadows so the time trigger's arrow remains intact. */
+:root[data-ui=material] :is(.btn,.icon-button,.text-button,.preset,.mode-switch button,.picker-period button):hover:not(:disabled) { box-shadow:inset 0 0 0 100vmax color-mix(in srgb,currentColor 8%,transparent); }
+:root[data-ui=material] :is(.btn,.icon-button,.text-button,.preset,.mode-switch button,.picker-period button):active:not(:disabled) { box-shadow:inset 0 0 0 100vmax color-mix(in srgb,currentColor 12%,transparent); }
+:root[data-ui=material] .mode-switch { background:transparent; border:1px solid var(--md-outline); padding:0; gap:0; border-radius:999px; overflow:hidden; }
+:root[data-ui=material] .mode-switch button { min-height:40px; border-radius:0; padding:8px 24px; color:var(--text); }
+:root[data-ui=material] .mode-switch button+button { border-left:1px solid var(--md-outline); }
+:root[data-ui=material] .mode-switch button[aria-pressed=true] { background:var(--md-secondary-container); color:var(--md-on-secondary-container); }
+:root[data-ui=material] .preset { border-radius:16px; background:var(--surface2); border-color:transparent; }
+:root[data-ui=material] .preset[aria-pressed=true] { background:var(--selection-bg); border-color:var(--md-primary); }
+:root[data-ui=material] .preset[aria-pressed=true] span,
+:root[data-ui=material] .preset[aria-pressed=true] small { color:var(--selection-ink); }
+:root[data-ui=material] :is(input[type=text],input[type=number],select) { background:transparent; color:var(--text); border:1px solid var(--md-outline); border-radius:4px; padding:11px 12px; min-height:44px; }
+:root[data-ui=material] input.task-input { text-align:left; margin-top:6px; border-radius:4px; }
+:root[data-ui=material] :is(input,select):focus { border-color:var(--md-primary); }
+:root[data-ui=material] .badge { border:0; border-radius:8px; background:var(--md-secondary-container); color:var(--md-on-secondary-container); }
+:root[data-ui=material] .tab-bar { background:var(--md-surface-container); backdrop-filter:none; -webkit-backdrop-filter:none; border:0; box-shadow:none; padding-top:8px; }
+:root[data-ui=material] .tab-btn { font-size:12px; font-weight:500; color:var(--text2); gap:6px; padding:6px 4px 12px; }
+:root[data-ui=material] .tab-btn:after { display:none; }
+:root[data-ui=material] .tab-btn[aria-current=page] { color:var(--text); }
+:root[data-ui=material] .tab-btn .icon { box-sizing:content-box; padding:4px 18px; border-radius:999px; }
+:root[data-ui=material] .tab-btn[aria-current=page] .icon { background:var(--md-secondary-container); color:var(--md-on-secondary-container); }
+:root[data-ui=material] dialog { background:var(--md-surface-container-high); border:0; border-radius:28px; box-shadow:0 4px 12px rgba(0,0,0,.24); }
+:root[data-ui=material] dialog h2 { font-size:22px; font-weight:500; }
+:root[data-ui=material] #time-picker { border-radius:28px; }
+:root[data-ui=material] #time-picker h2 { font-size:12px; font-weight:500; }
+:root[data-ui=material] .picker-dial { background:var(--md-surface-container-highest); }
+:root[data-ui=material] .picker-number { background:var(--md-surface-container-highest); border-radius:8px; }
+:root[data-ui=material] input.picker-number { width:90px; height:76px; min-height:0; padding:0; font-size:3rem; border-radius:8px; text-align:center; background:var(--md-surface-container-highest); }
+:root[data-ui=material] .picker-period { border-color:var(--md-outline); border-radius:8px; }
+:root[data-ui=material] .picker-period button[aria-pressed=true] { background:var(--md-tertiary-container); color:var(--md-on-tertiary-container); }
+:root[data-ui=material] #toast { background:var(--md-inverse-surface); color:var(--md-inverse-on-surface); border:0; border-radius:4px; }
+:root[data-ui=material] .complete-mark { background:var(--md-primary-container); color:var(--md-on-primary-container); }
+
+/* Apple: grouped neutral surfaces, system type, tinted actions, glass navigation. */
+:root[data-ui=apple] {
+  --radius:22px; --bg:#f2f2f7; --surface:#fff; --surface2:#f2f2f7; --surface3:#e5e5ea;
+  --border:rgba(60,60,67,.14); --text:#1c1c1e; --text2:#62626c; --text3:#6e6e73;
+  --green:#248a3d; --red:#d70015; --glass:rgba(249,249,251,.66);
+  --apple-panel:rgba(255,255,255,.62); --apple-dialog:rgba(255,255,255,.78); --apple-edge:rgba(255,255,255,.7); --apple-control:rgba(242,242,247,.72);
+  --shadow:0 2px 14px rgba(0,0,0,.035);
+}
+:root[data-ui=apple][data-theme=dark] {
+  --bg:#000; --surface:#1c1c1e; --surface2:#2c2c2e; --surface3:#3a3a3c;
+  --border:rgba(255,255,255,.12); --text:#f5f5f7; --text2:#aeaeb2; --text3:#98989d;
+  --green:#30d158; --red:#ff6961; --glass:rgba(36,36,38,.68);
+  --apple-panel:rgba(28,28,30,.62); --apple-dialog:rgba(28,28,30,.78); --apple-edge:rgba(255,255,255,.12); --apple-control:rgba(44,44,46,.74);
+  --shadow:0 2px 14px rgba(0,0,0,.12);
+}
+:root[data-ui=apple] body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; letter-spacing:-.015em; overflow-x:clip; background-image:radial-gradient(ellipse at 5% 20%,color-mix(in srgb,var(--accent) 32%,transparent),transparent 65%),radial-gradient(ellipse at 100% 85%,color-mix(in srgb,var(--accent-secondary,#22d3ee) 20%,transparent),transparent 65%); }
+:root[data-ui=apple] header { background:var(--glass); border-bottom:1px solid var(--border); }
+:root[data-ui=apple] h1 { color:var(--text); font-size:24px; font-weight:700; letter-spacing:-.04em; }
+:root[data-ui=apple] .card { border-radius:22px; background:var(--apple-panel); border-color:var(--apple-edge); box-shadow:inset 0 1px 0 var(--apple-edge),var(--shadow); backdrop-filter:blur(20px) saturate(140%); -webkit-backdrop-filter:blur(20px) saturate(140%); }
+:root[data-ui=apple] .card-heading { color:var(--text); text-transform:none; font-size:17px; line-height:1.35; font-weight:600; letter-spacing:-.025em; }
+:root[data-ui=apple] .card-heading:before { display:none; }
+:root[data-ui=apple] .time { font-size:clamp(42px,5vw,58px); font-weight:600; letter-spacing:-.045em; }
+:root[data-ui=apple] .time.long { font-size:40px; }
+:root[data-ui=apple] .stat strong { font-weight:600; letter-spacing:-.025em; }
+:root[data-ui=apple] :is(.btn,.text-button) { min-height:44px; font-size:14px; font-weight:600; line-height:1.3; border-radius:14px; }
+:root[data-ui=apple] .btn { border-color:transparent; background:var(--surface2); color:var(--accent-ink); }
+:root[data-ui=apple] .btn.small { padding:8px 12px; font-size:12px; }
+:root[data-ui=apple] .btn.primary { background:var(--accent); color:var(--on-accent); }
+:root[data-ui=apple] .btn.danger { color:var(--red); background:color-mix(in srgb,var(--red) 10%,var(--surface)); }
+:root[data-ui=apple] .btn:hover { filter:brightness(.97); }
+:root[data-ui=apple] .icon-button { width:44px; height:44px; background:var(--surface2); border:0; border-radius:14px; color:var(--text2); }
+:root[data-ui=apple] .badge { border:0; background:var(--surface2); color:var(--text2); border-radius:6px; letter-spacing:0; }
+:root[data-ui=apple] .mode-switch { border-radius:13px; padding:3px; gap:3px; background:var(--surface2); }
+:root[data-ui=apple] .mode-switch button { min-height:38px; border-radius:10px; font-size:13px; font-weight:500; }
+:root[data-ui=apple] .mode-switch button[aria-pressed=true] { background:var(--surface); color:var(--text); box-shadow:0 1px 5px rgba(0,0,0,.12); }
+:root[data-ui=apple] .preset { border:1px solid transparent; border-radius:16px; background:var(--surface2); }
+:root[data-ui=apple] .preset[aria-pressed=true] { border-color:var(--accent-ink); background:var(--selection-bg); }
+:root[data-ui=apple] :is(input[type=text],input[type=number],select) { min-height:44px; padding:11px 12px; border:1px solid var(--border); border-radius:12px; background:var(--surface2); color:var(--text); font-size:15px; }
+:root[data-ui=apple] input.task-input { text-align:left; margin-top:6px; }
+:root[data-ui=apple] .field-row input { padding:10px 8px; }
+:root[data-ui=apple] .tab-bar { left:50%; right:auto; transform:translateX(-50%); bottom:calc(10px + env(safe-area-inset-bottom)); width:calc(100% - 24px); max-width:640px; border:1px solid var(--border); border-radius:26px; padding:6px; background:var(--glass); box-shadow:0 8px 30px rgba(0,0,0,.14); }
+:root[data-ui=apple] .tab-btn { border-radius:21px; min-height:54px; padding:7px 4px; font-size:11px; font-weight:500; color:var(--text2); }
+:root[data-ui=apple] .tab-btn:after { display:none; }
+:root[data-ui=apple] .tab-btn[aria-current=page] { color:var(--accent-ink); background:color-mix(in srgb,var(--text) 7%,transparent); font-weight:600; }
+:root[data-ui=apple] dialog { background:var(--apple-dialog); backdrop-filter:blur(28px) saturate(150%); -webkit-backdrop-filter:blur(28px) saturate(150%); border:1px solid var(--border); border-radius:26px; box-shadow:0 18px 64px rgba(0,0,0,.24); }
+:root[data-ui=apple] dialog::backdrop { background:rgba(0,0,0,.3); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); }
+:root[data-ui=apple] :is(.btn:not(.primary):not(.danger),.icon-button,.badge,.mode-switch,.preset:not([aria-pressed=true]),input[type=text],input[type=number],select,.picker-dial,.picker-number:not([aria-pressed=true])) { background:var(--apple-control); }
+:root[data-ui=apple] dialog h2 { font-size:22px; font-weight:650; letter-spacing:-.035em; }
+:root[data-ui=apple] #time-picker { border-radius:26px; }
+:root[data-ui=apple] #time-picker h2 { font-size:17px; font-weight:600; color:var(--text); }
+:root[data-ui=apple] .picker-number { border-radius:12px; }
+:root[data-ui=apple] input.picker-number { width:90px; height:76px; min-height:0; padding:0; font-size:3rem; text-align:center; border-radius:12px; }
+:root[data-ui=apple] .picker-period { border-radius:12px; }
+:root[data-ui=apple] .picker-period button { font-weight:500; }
+:root[data-ui=apple] .progress-track { height:7px; }
+:root[data-ui=apple] .session-row { padding:16px 0; }
+:root[data-ui=apple] #toast { background:var(--glass); border:1px solid var(--border); border-radius:18px; font-size:14px; box-shadow:var(--shadow); }
+@supports ((backdrop-filter:blur(20px)) or (-webkit-backdrop-filter:blur(20px))) {
+  :root[data-ui=apple] :is(header,.tab-bar,#toast) { backdrop-filter:blur(24px) saturate(160%); -webkit-backdrop-filter:blur(24px) saturate(160%); }
+}
+
+/* Replace native checkboxes with each interface's switch treatment. */
+:root:is([data-ui=material],[data-ui=apple]) .setting input[type=checkbox] { appearance:none; -webkit-appearance:none; position:relative; width:52px; height:32px; min-width:52px; border:2px solid var(--border); border-radius:999px; background:var(--surface3); cursor:pointer; transition:background .2s var(--ease),border-color .2s var(--ease); }
+:root:is([data-ui=material],[data-ui=apple]) .setting input[type=checkbox]:after { content:''; position:absolute; width:20px; height:20px; left:4px; top:4px; border-radius:50%; background:var(--text2); transition:transform .2s var(--ease); }
+:root[data-ui=material] .setting input[type=checkbox]:checked { background:var(--md-primary); border-color:var(--md-primary); }
+:root[data-ui=material] .setting input[type=checkbox]:checked:after { background:var(--md-on-primary); transform:translateX(20px); }
+:root[data-ui=apple] .setting input[type=checkbox] { width:51px; min-width:51px; height:31px; border:0; }
+:root[data-ui=apple] .setting input[type=checkbox]:after { width:27px; height:27px; left:2px; top:2px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.22); }
+:root[data-ui=apple] .setting input[type=checkbox]:checked { background:var(--accent); }
+:root[data-ui=apple] .setting input[type=checkbox]:checked:after { transform:translateX(20px); }
+@media(max-width:350px) {
+  :root:is([data-ui=material],[data-ui=apple]) input.picker-number { width:76px; }
+}
+@media(prefers-reduced-transparency:reduce) {
+  :root[data-ui=apple] { --apple-control:var(--surface2); }
+  :root[data-ui=apple] :is(.card,header,.tab-bar,#toast,dialog) { background:var(--surface); backdrop-filter:none; -webkit-backdrop-filter:none; }
+}
+@supports not ((backdrop-filter:blur(20px)) or (-webkit-backdrop-filter:blur(20px))) {
+  :root[data-ui=apple] { --apple-control:var(--surface2); }
+  :root[data-ui=apple] :is(.card,header,.tab-bar,#toast,dialog) { background:var(--surface); }
+}
+@media(forced-colors:active) {
+  :root:is([data-ui=material],[data-ui=apple]) .setting input[type=checkbox] { appearance:auto; }
+  :root:is([data-ui=material],[data-ui=apple]) .setting input[type=checkbox]:after { display:none; }
+}

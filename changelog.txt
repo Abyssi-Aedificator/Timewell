@@ -1,0 +1,43 @@
+Timewell Changelog
+==================
+
+Version 1.0.0
+-------------
+
+Timers
+- Added focus and break countdowns with 15-, 25-, 45-, and 60-minute presets.
+- Added custom hours, minutes, and seconds, with all custom fields defaulting to zero.
+- Added an Android-style end-time picker with an hour/minute dial, AM/PM controls, and keyboard entry.
+- Start the countdown immediately when an end time is set; times that have passed use tomorrow.
+- Added pause, resume, and an extra-minute button.
+- Reset clears the countdown to 00:00 and clears duration and end-time selections, with confirmation for an active session.
+- Added keyboard shortcuts: Space to start or pause and R to reset.
+- Recover running countdowns after refresh and record elapsed timers when the app is reopened.
+
+Sessions and daily progress
+- Added session titles that appear in Your sessions after a countdown completes.
+- Added session history with JSON export, individual session deletion, and clear-all confirmation.
+- Show today's focus time, completed focus sessions, and breaks in Today, so far.
+- Added a Set daily goal button at the top-right of Today, so far, with a configurable target in minutes.
+- Recalculate daily totals and goal progress when sessions are deleted.
+- Removed the stopwatch and lap tracking while retaining previously saved sessions.
+
+Appearance
+- Added Classic, Material 3, and Liquid Glass interfaces, with light, dark, and system themes.
+- Added PlayDex's full 22-choice Theme Colour picker, including Default and theme-aware Grey.
+- Show both colour groups in Classic and Liquid Glass; limit Material 3's picker to the first group and use its tonal palettes.
+- Preserve existing colour preferences and apply saved theme colours before first paint.
+- Added translucent Liquid Glass panels, dialogs, and controls with frosted blur and a backdrop using both preset colours.
+- Aligned buttons, switches, fields, dialogs, navigation, and time-picker states with each interface.
+- Improved accent contrast and provided opaque fallbacks for reduced transparency and unsupported blur.
+- Place Today, so far in a third column on screens at least 1200 pixels wide.
+- Made Done the accented completion action and Take a break the secondary action.
+- Adjusted completion dialogs to fit their message with equal side padding.
+- Styled Cancel in the time picker as a secondary button.
+- Removed Recent sessions and Room to breathe from the Timer tab, and About Timewell from Settings.
+- Added an app-version badge and removed the header theme toggle.
+
+Offline and alerts
+- Added device-local session and preference storage without an account.
+- Added optional completion chimes and permission-based desktop notifications.
+- Added an installable app manifest, app icons, and scoped offline caching.
