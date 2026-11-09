@@ -1,6 +1,15 @@
 Timewell Changelog
 ==================
 
+Version 1.0.2
+-------------
+- Removed the introductory heading, subtitle, and date from the Timer tab.
+- Keep the header at the top of the page instead of following the page while scrolling.
+- Start each new app load at 00:00 instead of restoring a previous timer; saved history and preferences are retained.
+- Improved tablet layouts with balanced timer and settings columns, wider custom duration fields, and daily progress alongside the timer.
+- Added larger touch targets across all interfaces and a two-column Settings layout on wider screens.
+- Adapted the time picker to short landscape windows and kept dialogs scrollable so actions remain accessible.
+
 Version 1.0.1
 -------------
 - Fixed Android reporting Timewell as already installed by assigning it a dedicated /Timewell/ app identity instead of the shared website-root identity.
