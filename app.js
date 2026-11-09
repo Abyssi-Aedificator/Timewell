@@ -19,8 +19,8 @@
   if (!Array.isArray(history)) history = [];
   history = history.filter(s => s && typeof s.name === 'string' && Number.isFinite(s.duration) && s.duration > 0 && Number.isFinite(s.endedAt) && ['focus', 'break', 'stopwatch'].includes(s.mode));
   const freshTimer = (mode = 'focus', duration = mode === 'break' ? 300000 : 1500000) => ({ mode, duration, remaining: duration, running: false, deadline: null, startedAt: null, name: '' });
-  let timer = read('timer', null);
-  if (!timer || !['focus', 'break'].includes(timer.mode) || !Number.isFinite(timer.duration) || timer.duration < 0 || (timer.running && timer.duration === 0) || timer.duration > 86400000 || !Number.isFinite(timer.remaining) || timer.remaining < 0 || timer.remaining > timer.duration || (timer.running && (!Number.isFinite(timer.deadline) || !Number.isFinite(timer.startedAt)))) timer = freshTimer();
+  // Each new page load starts with an empty timer.
+  let timer = freshTimer('focus', 0);
   let page = 'timer', audioContext, toastTimeout, installPrompt;
   let pendingConfirmation = null;
   const systemTheme = matchMedia('(prefers-color-scheme: light)');
@@ -321,7 +321,7 @@
     if (timer.running && timer.deadline <= Date.now()) completeTimer();
     renderTimer();
     const now = new Date();
-    if (now.toDateString() !== dateKey) { dateKey = now.toDateString(); $('today-date').textContent = now.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' }); renderStats(); }
+    if (now.toDateString() !== dateKey) { dateKey = now.toDateString(); renderStats(); }
   }
   document.addEventListener('visibilitychange', tick);
   window.addEventListener('pageshow', tick);

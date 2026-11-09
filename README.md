@@ -15,10 +15,11 @@ No account, dependencies, or build step required. Your sessions and preferences 
 - **Daily progress** showing focus time, completed focus sessions, breaks, and a configurable focus goal.
 - **History management** with individual session deletion, clear-all, and JSON export.
 - **Completion alerts** with an optional chime and desktop notifications.
+- **Tablet-friendly layouts** with balanced columns, larger touch controls, and landscape-aware dialogs.
 - **Three interfaces:** Classic, Material 3, and Liquid Glass.
 - **Light, dark, and system themes**, with PlayDex's 22 Theme Colour choices.
 - **Offline support** after the app has been loaded successfully, and installation where supported.
-- **Session recovery** when you refresh or reopen the app.
+- **A fresh start at 00:00** whenever you open or reload the app; history and preferences stay saved.
 
 ## Getting started
 
@@ -81,7 +82,7 @@ Shortcuts apply on the Timer tab when focus is outside a control and no dialog i
 
 Sessions, timer state, and preferences use this browser's local storage. They are not synced across devices or browsers. Clearing site data removes them. Use **History > Export history** to download a JSON copy of your sessions; importing that file is not currently supported.
 
-The countdown uses a saved deadline to recover elapsed time after a refresh. A closed or suspended browser cannot reliably play sounds or deliver an alarm at the scheduled time. When you reopen Timewell, an elapsed timer is reconciled and recorded. Desktop notifications require permission, and the completion chime depends on browser audio support.
+While the page remains open, the countdown uses a deadline to keep time even when browser updates are delayed. Opening or reloading the app resets the timer to 00:00, including a previously running or paused timer. A closed or suspended browser cannot reliably play sounds or deliver an alarm at the scheduled time. Desktop notifications require permission, and the completion chime depends on browser audio support.
 
 ## Project files
 
@@ -90,6 +91,7 @@ The countdown uses a saved deadline to recover elapsed time after a refresh. A c
 | `index.html` | App layout and shared component styles |
 | `app.js` | Countdown, session history, goals, and local storage |
 | `time-picker.js` | Clock-dial and keyboard time picker |
+| `responsive.css` | Tablet layouts, touch targets, and landscape dialogs |
 | `themes.css` | Material 3 and Liquid Glass styles |
 | `themes.js` | Theme Colour presets, tonal palettes, and contrast handling |
 | `sw.js` | Scoped offline cache |

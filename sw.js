@@ -1,7 +1,7 @@
 // Keep each installation's caches inside its own scope, even on a shared Pages origin.
 const PREFIX = 'timewell-' + encodeURIComponent(new URL(self.registration.scope).pathname) + '-';
-const CACHE = PREFIX + 'v30';
-const ASSETS = ['./', './index.html', './app.js', './themes.js', './themes.css', './time-picker.js', './icon.svg', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png', './manifest.webmanifest'];
+const CACHE = PREFIX + 'v34';
+const ASSETS = ['./', './index.html', './app.js', './themes.js', './themes.css', './responsive.css', './time-picker.js', './icon.svg', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png', './manifest.webmanifest'];
 const assetURLs = new Set(ASSETS.map(asset => new URL(asset, self.registration.scope).href));
 self.addEventListener('install', event => {
   // Commit a complete app version before activating. Don't interrupt open timers.
