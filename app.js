@@ -125,6 +125,9 @@
     if (end <= now) end.setDate(end.getDate() + 1);
     return end.getTime() - now.getTime();
   }
+  function scrollToTimer() {
+    window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  }
   async function chooseDuration(duration, mode = timer.mode, endTime = null) {
     if (!Number.isFinite(duration) || duration < 1000 || duration > 86400000) return toast('Choose a duration between 1 second and 24 hours.');
     if (timer.startedAt && !await confirmAction()) return;
@@ -145,7 +148,7 @@
     $('custom-hours').value = Math.floor(duration / 3600000);
     $('custom-minutes').value = Math.floor(duration / 60000) % 60;
     $('custom-seconds').value = Math.floor(duration / 1000) % 60;
-    if (endTime !== null) toast('Timer started for ' + clock(duration, true) + '.');
+    if (endTime !== null) { scrollToTimer(); toast('Timer started for ' + clock(duration, true) + '.'); }
   }
   document.querySelectorAll('[data-minutes]').forEach(b => b.addEventListener('click', () => chooseDuration(Number(b.dataset.minutes) * 60000)));
   document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => { if (timer.mode !== b.dataset.mode) chooseDuration(b.dataset.mode === 'break' ? 300000 : 1500000, b.dataset.mode); }));
@@ -176,6 +179,7 @@
     if (timer.running) { timer.remaining = timeLeft(); timer.running = false; timer.deadline = null; }
     else { if (timer.remaining <= 0) timer.remaining = timer.duration; timer.startedAt ??= Date.now(); timer.deadline = Date.now() + timer.remaining; timer.running = true; }
     persistTimer(); renderTimer();
+    if (timer.running) scrollToTimer();
   });
   $('timer-reset').addEventListener('click', async () => {
     if (timer.startedAt && !await confirmAction()) return;
