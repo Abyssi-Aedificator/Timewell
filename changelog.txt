@@ -1,6 +1,10 @@
 Timewell Changelog
 ==================
 
+Version 1.0.3
+-------------
+- Scroll to the top when a timer starts or resumes, including timers started from the end-time picker; respect reduced-motion preferences.
+
 Version 1.0.2
 -------------
 - Removed the introductory heading, subtitle, and date from the Timer tab.
