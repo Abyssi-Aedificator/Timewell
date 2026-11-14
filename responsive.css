@@ -62,3 +62,7 @@ dialog .controls { flex-wrap:wrap; }
   :root .setting select { min-height:44px; }
   input.task-input { font-size:16px; }
 }
+
+/* Leave room for update/install actions on small screens. */
+header:has(#update-open:not([hidden])) { flex-wrap:wrap; gap:12px; }
+.header-tools { flex-wrap:wrap; justify-content:flex-end; max-width:100%; }

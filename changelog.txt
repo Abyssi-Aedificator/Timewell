@@ -1,6 +1,12 @@
 Timewell Changelog
 ==================
 
+Version 1.0.4
+-------------
+- Added PlayDex-style new-version prompts with Update now and Later, background update checks, and a persistent Update available button.
+- Keep the approved offline version until the user accepts an update; defer automatic prompts while timers or dialogs are active.
+- Verify the downloaded app files before updating, preserve history and preferences, and show retryable update errors.
+
 Version 1.0.3
 -------------
 - Scroll to the top when a timer starts or resumes, including timers started from the end-time picker; respect reduced-motion preferences.
