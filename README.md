@@ -84,11 +84,20 @@ Sessions, timer state, and preferences use this browser's local storage. They ar
 
 While the page remains open, the countdown uses a deadline to keep time even when browser updates are delayed. Opening or reloading the app resets the timer to 00:00, including a previously running or paused timer. A closed or suspended browser cannot reliably play sounds or deliver an alarm at the scheduled time. Desktop notifications require permission, and the completion chime depends on browser audio support.
 
+## App updates
+
+When a new version has downloaded, Timewell offers **Update now** or **Later**, like PlayDex. Choosing Later keeps the approved version and leaves an **Update available** button in the header. Updates are checked when the app opens, when it returns to the foreground, when connectivity returns, and periodically while it stays open.
+
+Automatic prompts wait until no timer or dialog is active. You can open the update prompt from the header at any time. **Update now** reloads the app and resets the current timer to `00:00`; history and preferences are kept. A download must be complete before it can be approved. An internet connection is needed to download a new version.
+
+The first upgrade from versions before 1.0.4 requires closing all Timewell tabs or app windows and reopening once to enable this update flow.
+
 ## Project files
 
 | File | Purpose |
 | --- | --- |
 | `index.html` | App layout and shared component styles |
+| `updates.js` | New-version checks, update prompts, and user-approved reloads |
 | `app.js` | Countdown, session history, goals, and local storage |
 | `time-picker.js` | Clock-dial and keyboard time picker |
 | `responsive.css` | Tablet layouts, touch targets, and landscape dialogs |

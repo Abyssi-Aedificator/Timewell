@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
+  const APP_VERSION = '1.0.4';
   const defaults = { theme: 'dark', ui: 'classic', accent: 'default', sound: true, notify: false, goal: 120 };
   let storageFailed = false;
   function read(key, fallback) {
@@ -343,5 +344,5 @@
   window.addEventListener('appinstalled', () => { $('install').hidden = true; });
   applySettings(); renderHistory(); tick();
   setInterval(tick, 100);
-  if ('serviceWorker' in navigator && ['https:', 'http:'].includes(location.protocol)) navigator.serviceWorker.register('./sw.js').catch(() => { toast('Offline mode could not be enabled. The timer still works while this page is open.'); });
+  TimewellUpdates.init({ version: APP_VERSION, isBusy: () => timer.running || timer.startedAt !== null, toast });
 })();
